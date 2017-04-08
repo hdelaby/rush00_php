@@ -82,15 +82,15 @@
     return ($res['basket']);
   }
 
-  function is_admin($link, $id, $is_admin)
+  function is_admin($link, $id)
   {
     $command = "
-      SELECT `id_user` FROM `USER` WHERE `id_user`='$id' `is_admin`='$is_admin' LIMIT 1;
+      SELECT `is_admin` FROM `USER` WHERE `id_user`='$id' LIMIT 1;
     ";
     if (($res=mysqli_query($link, $command))==false)
       return (FALSE);
-      $res = mysqli_fetch_array($res);
-      return ($res['id_user']);
+    $res = mysqli_fetch_array($res);
+    return ($res['is_admin']);
   }
 
   function set_admin($link, $id, $is_admin)
