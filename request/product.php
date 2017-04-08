@@ -23,6 +23,56 @@ function update_product($link, $id, $label, $description, $img, $price, $stock)
   return (TRUE);
 }
 
+function set_label($link, $id, $label)
+{
+  $command = "
+  UPDATE `PRODUCT` SET `label`='$label WHERE `id_product`='$id' LIMIT 1;
+  ";
+  if (mysqli_query($link, $command)==false)
+    return (FALSE);
+  return (TRUE);
+}
+
+function set_description($link, $id, $description)
+{
+  $command = "
+  UPDATE `PRODUCT` SET `description`='$description WHERE `id_product`='$id' LIMIT 1;
+  ";
+  if (mysqli_query($link, $command)==false)
+    return (FALSE);
+  return (TRUE);
+}
+
+function set_img($link, $id, $img)
+{
+  $command = "
+  UPDATE `PRODUCT` SET `img`='$img WHERE `id_product`='$id' LIMIT 1;
+  ";
+  if (mysqli_query($link, $command)==false)
+    return (FALSE);
+  return (TRUE);
+}
+
+function set_price($link, $id, $price)
+{
+  $command = "
+  UPDATE `PRODUCT` SET `price`='$price WHERE `id_product`='$id' LIMIT 1;
+  ";
+  if (mysqli_query($link, $command)==false)
+    return (FALSE);
+  return (TRUE);
+}
+
+function set_stock($link, $id, $stock)
+{
+  $command = "
+  UPDATE `PRODUCT` SET `stock`='$stock WHERE `id_product`='$id' LIMIT 1;
+  ";
+  if (mysqli_query($link, $command)==false)
+    return (FALSE);
+  return (TRUE);
+}
+
 function del_product($link, $id)
 {
   del_category_to_product_from_pro($link, $id);
@@ -38,6 +88,17 @@ function get_product($link, $id)
 {
   $command = "
     SELECT * FROM `PRODUCT` WHERE `id_product`='$id' LIMIT 1;
+  ";
+  if (($res=mysqli_query($link, $command))==false)
+    return (FALSE);
+  $res = mysqli_fetch_array($res);
+  return ($res);
+}
+
+function get_all_product($link)
+{
+  $command = "
+    SELECT * FROM `PRODUCT` ORDER BY `label`;
   ";
   if (($res=mysqli_query($link, $command))==false)
     return (FALSE);
