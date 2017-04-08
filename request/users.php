@@ -106,7 +106,7 @@
   function get_all_user($link)
   {
     $command = "
-      SELECT * FROM `USERS` ORDER BY `login`;
+      SELECT * FROM `USER` ORDER BY `login`;
     ";
     if (($res=mysqli_query($link, $command))==false)
       return (FALSE);
