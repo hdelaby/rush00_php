@@ -11,7 +11,6 @@ if ($_POST['submit'] === 'OK')
 		header("Location: account_create.php?error=1");
 		return ;
 	}
-	echo "COUCOU";
 	create_user($link, $_POST['login'], hash("whirlpool", $_POST['passwd']));
 	header("Location: index.php");
 }

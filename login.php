@@ -6,13 +6,16 @@ if ($_POST['submit'] == "OK")
 {
 	include("request/users.php");
 	$link = mysqli_connect('localhost', 'root', 'root', 'RUSH');
-	if (($key = check_user($link, $_POST['login'], $_POST['passwd'])) !== FALSE);
+	$id = check_user($link, $_POST['login'], hash("whirlpool", $_POST['passwd']));
+	if (!$id)
 	{
-		$_SESSION['logged_in_user'] = $key;
-		header("Location: index.php");
+		header("Location: login.php?error=1");
+		return ;
 	}
-	header("Location: login.php?error=1");
+	$_SESSION['logged_in_user'] = $id;
+	header("Location: index.php");
 }
+
 ?>
 <html>
 	<head>
