@@ -82,10 +82,10 @@
     return ($res['basket']);
   }
 
-  function is_admin($link, $login, $password, $is_admin)
+  function is_admin($link, $id, $is_admin)
   {
     $command = "
-      SELECT `id_user` FROM `USER` WHERE `login`='$login' AND `passwd`='$password' AND `is_admin`='$is_admin' LIMIT 1;
+      SELECT `id_user` FROM `USER` WHERE `id_user`='$id' `is_admin`='$is_admin' LIMIT 1;
     ";
     if (($res=mysqli_query($link, $command))==false)
       return (FALSE);
@@ -93,7 +93,7 @@
       return ($res['id_user']);
   }
 
-  function set_admin($link, $id, $is_admin)
+  function set_admin($linnk, $id, $is_admin)
   {
     $command = "
     UPDATE `USER` SET `is_admin`='$is_admin' WHERE `id_user`='$id' LIMIT 1;
