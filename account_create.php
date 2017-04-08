@@ -1,3 +1,11 @@
+<?PHP
+
+include("request/users.php");
+$link = mysqli_connect('localhost', 'root', 'root', 'RUSH');
+create_user($link, 'toto', 'vache');
+print_r(check_connect($link, 'toto', 'vache'));
+/* header("Location: index.php"); */
+?>
 <html>
 	<head>
 		<title>Creer un compte</title>
