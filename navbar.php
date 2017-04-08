@@ -12,7 +12,6 @@ if (!isset($_SESSION['logged_in_user']))
 else
 	echo ('	<a href="basket.php" style="float: right;">Mon panier</a>
 			<a href="logout.php" style="float: right;">Se deconnecter</a>
-			<a href="account_modif.html" style="float: right;">Modifier le mot de passe</a>
-			<a href="account_delete.html" style="float: right;">Supprimer le compte</a>');
+			<a href="account_delete.php" style="float: right;">Supprimer le compte</a>');
 ?>
 		</div>
