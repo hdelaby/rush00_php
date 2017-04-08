@@ -63,7 +63,9 @@ function get_all_category($link)
   ";
   if (($res=mysqli_query($link, $command))==false)
     return (FALSE);
-  $res = mysqli_fetch_array($res);
-  return ($res['id_category']);
+    $post = array();
+      while($row = mysqli_fetch_assoc($res))
+        $post[] = $row;
+    return ($post);
 }
 ?>

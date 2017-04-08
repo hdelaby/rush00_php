@@ -46,8 +46,10 @@
     ";
     if (($res=mysqli_query($link, $command))==false)
       return (FALSE);
-    $res = mysqli_fetch_array($res);
-    return ($res);
+      $post = array();
+        while($row = mysqli_fetch_assoc($res))
+          $post[] = $row;
+      return ($post);
   }
 
   function get_product_from_category($link, $id)
@@ -57,7 +59,9 @@
     ";
     if (($res=mysqli_query($link, $command))==false)
       return (FALSE);
-    $res = mysqli_fetch_array($res);
-    return ($res);
+      $post = array();
+        while($row = mysqli_fetch_assoc($res))
+          $post[] = $row;
+      return ($post);
   }
 ?>
