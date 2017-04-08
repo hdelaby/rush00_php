@@ -16,7 +16,8 @@
     ";
     if (($res=mysqli_query($link, $command))==false)
       return (FALSE);
-    return (mysqli_fetch_array($res));
+      res = mysqli_fetch_array($res);
+      return ($res['id_user']);
   }
 
   function check_login($link, $login)
