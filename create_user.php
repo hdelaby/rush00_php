@@ -10,8 +10,6 @@ if ($_POST['submit'] === "OK")
 		echo "ERROR\n";
 		exit;
 	}
-	if ($_POST['is_admin'] === "OUI")
-		set_admin($link, "lol", 1);
 	header("Location: admin_panel.php");
 }
 ?>
@@ -33,11 +31,6 @@ if ($_POST['submit'] === "OK")
 			Mot de passe
 			<br />
 			<input type="password" name="passwd" value="" />
-			<br />
-			Administrateur
-			<br />
-			<input type="radio" name="is_admin" value="OUI" />OUI
-			<input type="radio" name="is_admin" value="NON" checked />NON
 			<br />
 			<input type="submit" name="submit" value="OK">
 		</form>

@@ -8,7 +8,7 @@ if (!isset($id))
 include("request/product.php");
 ?>
 
-<a href=#>Ajouter un produit</a>
+<a href="create_product.php">Ajouter un produit</a>
 
 <table>
 	<tr>
@@ -26,8 +26,8 @@ foreach ($products as $product)
 	echo "<tr>
 	<td>".$product['label']."</td>
 	<td>".$product['price']."</td>
-	<td><a href=#>Modifier</a></td>
-	<td><a href=#>Supprimer</a></td>
+	<td><a href=modify_product.php?id=".$product['id_product'].">Modifier</a></td>
+	<td><a href=delete_product.php?id=".$product['id_product'].">Supprimer</a></td>
 	</tr>";
 ?>
 </table>

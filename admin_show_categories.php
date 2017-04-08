@@ -8,7 +8,7 @@ if (!isset($id))
 include("request/category.php");
 ?>
 
-<a href=#>Ajouter une categorie</a>
+<a href="create_category.php">Ajouter une categorie</a>
 
 <table>
 	<tr>
@@ -24,8 +24,8 @@ if (!$cats)
 foreach ($cats as $cat)
 	echo "<tr>
 	<td>".$cat['label']."</td>
-	<td><a href=#>Modifier</a></td>
-	<td><a href=#>Supprimer</a></td>
+	<td><a href=modify_category.php?id=".$cat['id_category'].">Modifier</a></td>
+	<td><a href=delete_category.php?id=".$cat['id_category'].">Supprimer</a></td>
 	</tr>";
 ?>
 </table>
