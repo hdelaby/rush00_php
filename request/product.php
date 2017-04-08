@@ -94,4 +94,15 @@ function get_product($link, $id)
   $res = mysqli_fetch_array($res);
   return ($res);
 }
+
+function get_all_product($link)
+{
+  $command = "
+    SELECT * FROM `PRODUCT` ORDER BY `label`;
+  ";
+  if (($res=mysqli_query($link, $command))==false)
+    return (FALSE);
+  $res = mysqli_fetch_array($res);
+  return ($res);
+}
 ?>

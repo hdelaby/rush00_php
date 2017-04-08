@@ -55,4 +55,15 @@ function del_category($link, $id)
     return (FALSE);
   return (TRUE);
 }
+
+function get_all_category($link)
+{
+  $command = "
+    SELECT * FROM `CATEGORY` ORDER BY `label`;
+  ";
+  if (($res=mysqli_query($link, $command))==false)
+    return (FALSE);
+  $res = mysqli_fetch_array($res);
+  return ($res['id_category']);
+}
 ?>
