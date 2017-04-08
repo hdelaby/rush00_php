@@ -1,3 +1,10 @@
+<?PHP
+
+session_start();
+$_SESSION['logged_in_user'] = "OUI";
+header("Location: index.php");
+
+?>
 <html>
 	<head>
 		<title>Se connecter</title>
