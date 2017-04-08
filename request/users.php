@@ -18,4 +18,14 @@
       return (FALSE);
     return (mysqli_fetch_array($res));
   }
+
+  function check_login($link, $login)
+  {
+    $command = "
+      SELECT `id_user` FROM `USER` WHERE `login`='$login' LIMIT 1;
+    ";
+    if (($res=mysqli_query($link, $command))==false)
+      return (FALSE);
+    return (mysqli_fetch_array($res));
+  }
 ?>
