@@ -1,10 +1,20 @@
 <?PHP
 
-include("request/users.php");
-$link = mysqli_connect('localhost', 'root', 'root', 'RUSH');
-create_user($link, 'toto', 'vache');
-print_r(check_connect($link, 'toto', 'vache'));
-/* header("Location: index.php"); */
+session_start();
+
+if ($_POST['submit'] === 'OK')
+{
+	include("request/users.php");
+	$link = mysqli_connect('localhost', 'root', 'root', 'RUSH');
+	if (check_login($link, $_POST['login']))
+	{
+		header("Location: account_create.php?error=1");
+		return ;
+	}
+	echo "COUCOU";
+	create_user($link, $_POST['login'], hash("whirlpool", $_POST['passwd']));
+	header("Location: index.php");
+}
 ?>
 <html>
 	<head>
@@ -26,5 +36,7 @@ print_r(check_connect($link, 'toto', 'vache'));
 			<br />
 			<input type="submit" name="submit" value="OK">
 		</form>
+		<!-- FORMATER CA */ -->
+		<?PHP if ($_GET['error'] == 1) echo "<p>Identifiant deja utilise</p>"; ?>
 	</body>
 </html>

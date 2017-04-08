@@ -1,9 +1,18 @@
 <?PHP
 
 session_start();
-$_SESSION['logged_in_user'] = "OUI";
-header("Location: index.php");
 
+if ($_POST['submit'] == "OK")
+{
+	include("request/users.php");
+	$link = mysqli_connect('localhost', 'root', 'root', 'RUSH');
+	if (($key = check_user($link, $_POST['login'], $_POST['passwd'])) !== FALSE);
+	{
+		$_SESSION['logged_in_user'] = $key;
+		header("Location: index.php");
+	}
+	header("Location: login.php?error=1");
+}
 ?>
 <html>
 	<head>
@@ -25,5 +34,6 @@ header("Location: index.php");
 			<br />
 			<input type="submit" name="submit" value="OK">
 		</form>
+<?PHP if ($_GET['error'] == 1) echo "<p>Mauvais identifiants</p>"; ?>
 	</body>
 </html>
