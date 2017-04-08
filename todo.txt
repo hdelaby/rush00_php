@@ -1,0 +1,30 @@
+-> Base de donnees
+	MySQLi ou CSV?
+	Un produit peut etre dans plusieurs categories, comment implementer ca??
+
+-> Gestion utilisateur
+	login.php
+	logout.php
+	create_account.php
+	delete_acount.php
+	modif.php ?? Pas indique dans le sujet
+
+-> Panier
+	cart_add.php
+	cart_remove.php
+	cart_get.php
+	Comment utiliser les sessions a notre avantage si l'utilisateur n'est pas log?
+
+-> Front
+	toutes les pages html (OSEF du design pour l'instant)
+
+-> Admin
+	article_add.php
+	article_delete.php
+	article_modif.php
+	admin_create_account.php
+	admin_delete_account.php
+	admin_modif_account.php
+	category_add.php
+	category_delete.php
+	category_modif.php

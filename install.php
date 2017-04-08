@@ -1,0 +1,1 @@
+CREATE DATABASE rush_ecommerce
