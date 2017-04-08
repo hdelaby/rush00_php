@@ -66,7 +66,7 @@ function set_price($link, $id, $price)
 function set_stock($link, $id, $stock)
 {
   $command = "
-  UPDATE `PRODUCT` SET `stock`='$stock WHERE `id_product`='$id' LIMIT 1;
+  UPDATE `PRODUCT` SET `stock`='$stock' WHERE `id_product`='$id' LIMIT 1;
   ";
   if (mysqli_query($link, $command)==false)
     return (FALSE);

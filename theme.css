@@ -67,3 +67,15 @@ input[type=submit] {
 	margin-top: 10px;
 	width: 50%;
 }
+
+.product  {
+	background-color: lightblue;
+	padding-top: 10px;
+	padding-bottom: 10px;
+	padding-left: 15px;
+	padding-right: 15px;
+}
+
+.product h2 {
+	text-align: center;
+}
