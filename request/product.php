@@ -1,4 +1,8 @@
 <?php
+
+if (!function_exists('link_category_to_product'))
+  include('cat_pro.php');
+
 function create_product($link, $label, $description, $img, $price, $stock)
 {
   $command = "
@@ -21,6 +25,7 @@ function update_product($link, $id, $label, $description, $img, $price, $stock)
 
 function del_product($link, $id)
 {
+  del_category_to_product_from_pro($link, $id);
   $command = "
     DELETE FROM `PRODUCT` WHERE `id_product`='$id' LIMIT 1;
   ";

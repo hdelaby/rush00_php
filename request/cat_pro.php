@@ -42,7 +42,7 @@
   function get_category_from_product($link, $id)
   {
     $command = "
-      SELECT * FROM `PRODUCT_CATEGORY` WHERE `id_prod`='$id';
+      SELECT `id_category`,`label` FROM `PRODUCT_CATEGORY` INNER JOIN `CATEGORY` ON `id_cat`=`id_category` WHERE `id_cat`='$id';
     ";
     if (($res=mysqli_query($link, $command))==false)
       return (FALSE);
@@ -50,10 +50,10 @@
     return ($res);
   }
 
-  function get_category_from_category($link, $id)
+  function get_product_from_category($link, $id)
   {
     $command = "
-      SELECT * FROM `PRODUCT_CATEGORY` WHERE `id_cat`='$id';
+      SELECT `id_product`,`label`,`description`,`img`,`price`,`stock` FROM `PRODUCT_CATEGORY` INNER JOIN `PRODUCT` ON `id_prod`=`id_product` WHERE `id_cat`='$id';
     ";
     if (($res=mysqli_query($link, $command))==false)
       return (FALSE);
