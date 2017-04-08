@@ -7,7 +7,7 @@ if (!isset($id))
 }
 ?>
 
-<a href=#>Ajouter un utilisateur</a>
+<a href="create_user.php">Ajouter un utilisateur</a>
 
 <table>
 	<tr>
