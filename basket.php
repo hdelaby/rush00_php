@@ -1,3 +1,7 @@
+<?PHP
+session_start();
+?>
+
 <html>
 <head>
 	<title>Mon panier</title>

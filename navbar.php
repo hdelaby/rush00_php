@@ -1,8 +1,3 @@
-<?PHP
-
-session_start();
-
-?>
 		<div class="navbar">
 			<a href="index.php">Accueil</a>
 <?PHP
