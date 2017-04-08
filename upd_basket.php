@@ -19,5 +19,7 @@
   if ($_GET['less'] != '')
   {
     $product = get_product($link, $_GET['less']);
+    set_stock($link, $_GET['less'], ($product['stock'] + 1));
+    header("Location: basket.php");
   }
 ?>
