@@ -27,5 +27,8 @@ foreach($products as $value)
 	echo ("<p>".$value['description']."</p>");
 }
 ?>
+<form action='valid_basket.php'>
+	<button name="submit" value="ok">Valider le panier</button>
+</form>
 </body>
 </html>
