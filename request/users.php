@@ -93,7 +93,7 @@
       return ($res['id_user']);
   }
 
-  function set_admin($linnk, $id, $is_admin)
+  function set_admin($link, $id, $is_admin)
   {
     $command = "
     UPDATE `USER` SET `is_admin`='$is_admin' WHERE `id_user`='$id' LIMIT 1;
