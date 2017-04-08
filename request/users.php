@@ -102,4 +102,17 @@
       return (FALSE);
     return (TRUE);
   }
+
+  function get_all_user($link)
+  {
+    $command = "
+      SELECT * FROM `USERS` ORDER BY `login`;
+    ";
+    if (($res=mysqli_query($link, $command))==false)
+      return (FALSE);
+      $post = array();
+        while($row = mysqli_fetch_assoc($res))
+          $post[] = $row;
+      return ($post);
+  }
 ?>
