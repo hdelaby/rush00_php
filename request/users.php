@@ -2,7 +2,7 @@
   function create_user($link, $login, $password)
   {
     $command = "
-    INSERT INTO `USER` (`id_user`, `login`, `passwd`, `basket`, `is_admin`) VALUES (NULL, '$login', '$password', '', '0');
+    INSERT INTO `USER` (`id_user`, `login`, `passwd`, `basket`, `is_admin`) VALUES (NULL, '".mysqli_real_escape_string($link, $login)."', '".mysqli_real_escape_string($link, $password)."', '', '0');
     ";
     if (mysqli_query($link, $command)==false)
       return (FALSE);
@@ -12,7 +12,7 @@
   function check_user($link, $login, $password)
   {
     $command = "
-      SELECT `id_user` FROM `USER` WHERE `login`='$login' AND `passwd`='$password' LIMIT 1;
+      SELECT `id_user` FROM `USER` WHERE `login`='".mysqli_real_escape_string($link, $login)."' AND `passwd`='".mysqli_real_escape_string($link, $password)."' LIMIT 1;
     ";
     if (($res=mysqli_query($link, $command))==false)
       return (FALSE);
@@ -23,7 +23,7 @@
   function check_login($link, $login)
   {
     $command = "
-      SELECT `id_user` FROM `USER` WHERE `login`='$login' LIMIT 1;
+      SELECT `id_user` FROM `USER` WHERE `login`='".mysqli_real_escape_string($link, $login)."' LIMIT 1;
     ";
     if (($res=mysqli_query($link, $command))==false)
       return (FALSE);
@@ -34,7 +34,7 @@
   function del_user($link, $id)
   {
     $command = "
-    DELETE FROM `USER` WHERE `id_user`='$id' LIMIT 1;
+    DELETE FROM `USER` WHERE `id_user`='".intval($id)."' LIMIT 1;
     ";
     if (mysqli_query($link, $command)==false)
       return (FALSE);
@@ -44,7 +44,7 @@
   function set_login($link, $id, $login)
   {
     $command = "
-    UPDATE `USER` SET `login`='$login' WHERE `id_user`='$id' LIMIT 1;
+    UPDATE `USER` SET `login`='".mysqli_real_escape_string($link, $login)."' WHERE `id_user`='".intval($id)."' LIMIT 1;
     ";
     if (mysqli_query($link, $command)==false)
       return (FALSE);
@@ -54,7 +54,7 @@
   function set_password($link, $id, $password)
   {
     $command = "
-    UPDATE `USER` SET `passwd`='$password' WHERE `id_user`='$id' LIMIT 1;
+    UPDATE `USER` SET `passwd`='".mysqli_real_escape_string($link, $password)."' WHERE `id_user`='".intval($id)."' LIMIT 1;
     ";
     if (mysqli_query($link, $command)==false)
       return (FALSE);
@@ -64,7 +64,7 @@
   function set_basket($link, $id, $basket)
   {
     $command = "
-    UPDATE `USER` SET `basket`='$basket' WHERE `id_user`='$id' LIMIT 1;
+    UPDATE `USER` SET `basket`='$basket' WHERE `id_user`='".intval($id)."' LIMIT 1;
     ";
     if (mysqli_query($link, $command)==false)
       return (FALSE);
@@ -74,7 +74,7 @@
   function get_basket($link, $id)
   {
     $command = "
-      SELECT `basket` FROM `USER` WHERE `id_user`='$id' LIMIT 1;
+      SELECT `basket` FROM `USER` WHERE `id_user`='".intval($id)."' LIMIT 1;
     ";
     if (($res=mysqli_query($link, $command))==false)
       return (FALSE);
@@ -82,10 +82,21 @@
     return ($res['basket']);
   }
 
+  function get_login($link, $id)
+  {
+    $command = "
+      SELECT `login` FROM `USER` WHERE `id_user`='".intval($id)."' LIMIT 1;
+    ";
+    if (($res=mysqli_query($link, $command))==false)
+      return (FALSE);
+    $res = mysqli_fetch_array($res);
+    return ($res['login']);
+  }
+
   function is_admin($link, $id)
   {
     $command = "
-      SELECT `is_admin` FROM `USER` WHERE `id_user`='$id' LIMIT 1;
+      SELECT `is_admin` FROM `USER` WHERE `id_user`='".intval($id)."' LIMIT 1;
     ";
     if (($res=mysqli_query($link, $command))==false)
       return (FALSE);
@@ -96,7 +107,7 @@
   function set_admin($link, $id, $is_admin)
   {
     $command = "
-    UPDATE `USER` SET `is_admin`='$is_admin' WHERE `id_user`='$id' LIMIT 1;
+    UPDATE `USER` SET `is_admin`='$is_admin' WHERE `id_user`='".intval($id)."' LIMIT 1;
     ";
     if (mysqli_query($link, $command)==false)
       return (FALSE);
