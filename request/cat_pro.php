@@ -42,7 +42,7 @@
   function get_category_from_product($link, $id)
   {
     $command = "
-      SELECT `id_category`,`label` FROM `PRODUCT_CATEGORY` INNER JOIN `CATEGORY` ON `id_cat`=`id_category` WHERE `id_cat`='".intval($id)."' ORDER BY `label`;
+      SELECT `id_category`,`label` FROM `PRODUCT_CATEGORY` INNER JOIN `CATEGORY` ON `id_cat`=`id_category` WHERE `id_prod`='".intval($id)."' ORDER BY `label`;
     ";
     if (($res=mysqli_query($link, $command))==false)
       return (FALSE);
