@@ -1,11 +1,5 @@
-<?PHP
+<?php
 session_start();
-if (!$_SESSION['logged_in_user'])
-	header("Location: index.php");
-include('request/users.php');
-$link = mysqli_connect('localhost', 'root', 'root', 'RUSH');
-// SERIALIZE THE BASKET BEFORE PUTTING IN IN DB
-set_basket($link, $_SESSION['logged_in_user'], $_SESSION['basket']);
 ?>
 
 <html>
@@ -24,3 +18,10 @@ include("navbar.php");
 </form>
 </body>
 </html>
+<?PHP
+if (!$_SESSION['logged_in_user'])
+	header("Location: index.php");
+$link = mysqli_connect('localhost', 'root', 'root', 'RUSH');
+// SERIALIZE THE BASKET BEFORE PUTTING IN IN DB
+set_basket($link, $_SESSION['logged_in_user'], serialize($_SESSION['basket']));
+?>
