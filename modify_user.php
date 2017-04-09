@@ -5,14 +5,12 @@ if ($_POST['submit'] === "OK")
 {
 	if (check_login($link, $_POST['login']))
 		exit;
-	if (!create_user($link, $_POST['login'], hash("whirlpool", $_POST['passwd'])))
-	{
-		echo "ERROR\n";
-		exit;
-	}
+	set_login($link, $_GET['id'], $_POST['admin));
+	set_login($link, $_GET['id']);
+	set_login($link, $_GET['id']);
 	header("Location: admin_panel.php");
 }
-include("request/users.php");
+$login = get_login($link, $_GET['id']);
 ?>
 
 <html>
