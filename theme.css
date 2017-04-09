@@ -116,6 +116,11 @@ input[type=submit], button {
 	font-size: 1.5em;
 }
 
+.lessbutton {
+	margin-top: 60px;
+	background-color: red;
+}
+
 .admin-table {
 	margin-top: 20px;
 	margin-left: auto;

@@ -25,6 +25,17 @@ function	add_basket($basket, $id_product)
 	return $basket;
 }
 
+function	less_basket($basket, $id_product)
+{
+	if (is_integer($key = find_product_key($basket, $id_product)))
+	{
+		$basket[$key]['quantity'] -= 1;
+		if (!$basket[$key]['quantity'])
+			array_splice($basket, $key, 1);
+	}
+	return $basket;
+}
+
 $link = mysqli_connect('localhost', 'root', 'root', 'RUSH');
 if ($_POST['add'] != '')
 {
@@ -36,14 +47,16 @@ if ($_POST['add'] != '')
 		$_SESSION['basket'] = $new_basket;
 		header("Location: basket.php");
 	}
+	else
+		header("Location: basket.php?error=1");
+}
+else if ($_POST['less'] != '')
+{
+	$product = get_product($link, $_POST['less']);
+	set_stock($link, $_POST['less'], ($product['stock'] + 1));
+	$_SESSION['basket'] = less_basket($_SESSION['basket'], $_POST['less']);
+	header("Location: basket.php");
+}
 else
 	header("Location: basket.php?error=1");
-}
-header("Location: basket.php?error=1");
-/* if ($_GET['less'] != '') */
-/* { */
-/*   $product = get_product($link, $_GET['less']); */
-/*   set_stock($link, $_GET['less'], ($product['stock'] + 1)); */
-/*   header("Location: basket.php"); */
-/* } */
 ?>
