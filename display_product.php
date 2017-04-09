@@ -10,8 +10,13 @@
     $products = get_all_product($link);
       foreach($products as $product)
       {
-        echo ("<div class='product'><h2>".$product['label']."</h2>");
-        echo ("<p>".$product['description']." Prix: ".((int)$product['price'] / 100)."€ Stock: ".$product['stock']."</p>");
-		echo ("<form action='upd_basket.php' method='post'><button name='add' value='".$product['id_product']."'>+</button></form></div>");
+        echo ("<div class='product'><h2>".$product['label']." (".((int)$product['price'] / 100)."€)</h2>");
+		echo ("<p>Description: ".$product['description']."</p>");
+		// Gerer le cas ou stock = 0;
+		echo ("<p>Encore <b>".$product['stock']."</b> en stock.</p>");
+		echo ("<form action='upd_basket.php' method='post'>
+			<button name='add' value='".$product['id_product']."'>Ajouter au panier</button>
+			</form></div>");
+		// Else echo "plus de stock dispo"
       }
     ?>

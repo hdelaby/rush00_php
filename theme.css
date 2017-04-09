@@ -58,7 +58,7 @@ input[type=text], input[type=password] {
 	font-size: 1em;
 }
 
-input[type=submit] {
+input[type=submit], button {
 	background-color: #4CAF50;
 	border: none;
 	color: white;
@@ -73,6 +73,7 @@ input[type=submit] {
 	float:left;
 	margin-left: 10px;
 	width: 70%;
+	min-width: 600px;
 }
 
 .product  {
@@ -85,10 +86,21 @@ input[type=submit] {
 	padding-right: 15px;
 	position: relative;
 	margin-bottom: 10px;
+	position: relative;
 }
 
-.product input[type=submit] {
-	width: 15px;
+.product h2 {
+	margin-top: 2px;
+	margin-bottom: 5px;
+}
+
+.product button {
+	float: right;
+	width: 80px;
+	padding: 5px;
+	position: absolute;
+	right: 5px;
+	top: 0px;
 }
 
 .add-button {

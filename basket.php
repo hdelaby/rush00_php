@@ -11,21 +11,20 @@ session_start();
 <body>
 <?PHP
 include("navbar.php");
+include("request/product.php");
 
-$products = array(array(
-	"label" => "Carottes",
-	"description" => "Ceci est une carotte"
-));
-$products[] = array(
-	"label" => "Haricots",
-	"description" => "Ceci est un haricot"
-);
-
-foreach($products as $value)
+if (isset($_SESSION['basket']))
 {
-	echo ("<h2>".$value['label']."</h2>");
-	echo ("<p>".$value['description']."</p>");
+	$link = mysqli_connect('localhost', 'root', 'root', 'RUSH');
+	foreach($_SESSION['basket'] as $val)
+	{
+		$product = get_product($link, $val['id_product']);
+		echo ("<h2>".$product['label']."</h2>");
+		echo ("<p>".$product['description']."</p>");
+		echo ("<p>Quantite: ".$val['quantity']."</p>");
+	}
 }
+
 ?>
 <form action='valid_basket.php'>
 	<button name="submit" value="ok">Valider le panier</button>
