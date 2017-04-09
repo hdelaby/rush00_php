@@ -19,6 +19,17 @@ function del_order($link, $id)
   return (TRUE);
 }
 
+function get_order($link, $id)
+{
+  $command = "
+    SELECT * FROM `ORDERS` WHERE `id_order`='".intval($id)."' LIMIT 1;
+  ";
+  if (($res=mysqli_query($link, $command))==false)
+    return (FALSE);
+  $res = mysqli_fetch_array($res);
+  return ($res);
+}
+
 function get_all_orders($link)
 {
   $command = "
@@ -31,4 +42,5 @@ function get_all_orders($link)
         $post[] = $row;
     return ($post);
 }
+
 ?>

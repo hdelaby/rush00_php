@@ -82,6 +82,17 @@
     return ($res['basket']);
   }
 
+  function get_login($link, $id)
+  {
+    $command = "
+      SELECT `login` FROM `USER` WHERE `id_user`='".intval($id)."' LIMIT 1;
+    ";
+    if (($res=mysqli_query($link, $command))==false)
+      return (FALSE);
+    $res = mysqli_fetch_array($res);
+    return ($res['login']);
+  }
+
   function is_admin($link, $id)
   {
     $command = "
