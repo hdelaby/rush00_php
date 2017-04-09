@@ -9,14 +9,16 @@ function	find_product_key($basket, $id_product)
 	if (!$basket)
 		return FALSE;
 	foreach ($basket as $key => $val)
+	{
 		if ($val['id_product'] == $id_product)
 			return $key;
+	}
 	return FALSE;
 }
 
 function	add_basket($basket, $id_product)
 {
-	if (($key = find_product_key($basket, $id_product)) != FALSE)
+	if (is_integer($key = find_product_key($basket, $id_product)))
 		$basket[$key]['quantity'] += 1;
 	else
 		$basket[] = array('id_product' => $id_product, 'quantity' => (int)1);
