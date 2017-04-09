@@ -6,6 +6,8 @@ session_start();
 
 function	find_product_key($basket, $id_product)
 {
+	if (!$basket)
+		return FALSE;
 	foreach ($basket as $key => $val)
 		if ($val['id_product'] == $id_product)
 			return $key;
@@ -28,7 +30,8 @@ if ($_POST['add'] != '')
 	if ($product['stock'] > 0)
 	{
 		set_stock($link, $_POST['add'], ($product['stock'] - 1));
-		$_SESSION['basket'] = add_basket($_SESSION['basket'], $product['id_product']);
+		$new_basket = add_basket($_SESSION['basket'], $_POST['add']);
+		$_SESSION['basket'] = $new_basket;
 		header("Location: basket.php");
 	}
 else

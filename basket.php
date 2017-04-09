@@ -13,7 +13,7 @@ session_start();
 include("navbar.php");
 include("request/product.php");
 
-if (isset($_SESSION['basket']))
+if ($_SESSION['basket'])
 {
 	$link = mysqli_connect('localhost', 'root', 'root', 'RUSH');
 	foreach($_SESSION['basket'] as $val)
