@@ -19,6 +19,16 @@ function del_order($link, $id)
   return (TRUE);
 }
 
+function update_order($link, $id, $name, $content, $total)
+{
+  $command = "
+    UPDATE `ORDERS` SET `name`='".mysqli_real_escape_string($link, $name)."', `content`='".mysqli_real_escape_string($link, $content)."', `total`='".intval($total)."' WHERE `id_order`='".intval($id)."' LIMIT 1;
+  ";
+  if (mysqli_query($link, $command)==false)
+	  return (FALSE);
+  return (TRUE);
+}
+
 function get_order($link, $id)
 {
   $command = "
