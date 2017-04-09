@@ -69,6 +69,13 @@ CREATE TABLE `PRODUCT_CATEGORY` (
   `id_cat` int(11) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1 ROW_FORMAT=COMPACT;
 
+CREATE TABLE `ORDERS` (
+  `id_order` int(11) NOT NULL,
+  `name` text NOT NULL,
+  `content` text NOT NULL,
+  `total` int(11) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=latin1 ROW_FORMAT=COMPACT;
+
 --
 -- Indexes for dumped tables
 --
@@ -123,6 +130,9 @@ ALTER TABLE `CATEGORY`
 --
 ALTER TABLE `PRODUCT_CATEGORY`
   MODIFY `id_p_c` int(11) NOT NULL AUTO_INCREMENT;
+
+ALTER TABLE `ORDERS`
+  MODIFY `id_order` int(11) NOT NULL AUTO_INCREMENT;
 --
 -- Constraints for dumped tables
 --
