@@ -16,10 +16,10 @@ function create_product($link, $label, $description, $img, $price, $stock)
 function update_product($link, $id, $label, $description, $img, $price, $stock)
 {
   $command = "
-    UPDATE `PRODUCT` SET `label`='$label', `description`='$description', `img`='$img', `price`='$price', `stock`='$stock', WHERE `id_product`='$id' LIMIT 1;
-  ";
+    UPDATE `PRODUCT` SET `label`='$label', `description`='$description', `img`='$img', `price`='$price', `stock`='$stock' WHERE `id_product`='$id' LIMIT 1;
+";
   if (mysqli_query($link, $command)==false)
-    return (FALSE);
+	  return (FALSE);
   return (TRUE);
 }
 

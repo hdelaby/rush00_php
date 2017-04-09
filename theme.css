@@ -72,17 +72,52 @@ input[type=submit] {
 .float {
 	float:left;
 	margin-left: 10px;
-	width: 800px;;
+	width: 70%;
 }
 
 .product  {
-	background-color: lightblue;
+	background-color: #f2f2f2;
+	border: 2px solid black;
+	border-radius: 4px;
 	padding-top: 10px;
 	padding-bottom: 10px;
 	padding-left: 15px;
 	padding-right: 15px;
+	position: relative;
+	margin-bottom: 10px;
 }
 
-.product h2 {
+.product input[type=submit] {
+	width: 15px;
+}
+
+.add-button {
+	text-decoration: none;
 	text-align: center;
+	display: block;
+	width: 50%;
+	padding: 25px 16px;
+	color: #f2f2f2;
+	background-color: #4CAF50;
+	margin-left: auto;
+	margin-right: auto;
+	font-size: 1.5em;
+}
+
+.admin-table {
+	margin-top: 20px;
+	margin-left: auto;
+	margin-right: auto;
+}
+
+.admin-table th, td {
+	padding: 10px 10px;
+	text-align: center;
+	border: 1px solid black;
+}
+
+.error-empty {
+	margin-top: 20px;
+	text-align: center;
+	color: red;
 }

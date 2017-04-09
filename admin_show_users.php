@@ -7,9 +7,9 @@ if (!isset($id))
 }
 ?>
 
-<a href="create_user.php">Ajouter un utilisateur</a>
+<a class="add-button" href="create_user.php">Ajouter un utilisateur</a>
 
-<table>
+<table class="admin-table">
 	<tr>
 		<th>Login</th>
 		<th>Admin</th>
@@ -20,7 +20,7 @@ if (!isset($id))
 <?PHP
 $users = get_all_user($link);
 if (!$users)
-	echo "<p>Aucun utilisateur a afficher</p>";
+	echo '<h2 class="error-empty">Pas d\'utilisateur a afficher</h2>';
 foreach ($users as $user)
 	echo "<tr>
 	<td>".$user['login']."</td>

@@ -8,9 +8,9 @@ if (!isset($id))
 include("request/category.php");
 ?>
 
-<a href="create_category.php">Ajouter une categorie</a>
+<a class="add-button" href="create_category.php">Ajouter une categorie</a>
 
-<table>
+<table class="admin-table">
 	<tr>
 		<th>Label</th>
 		<th>Modifier</th>
@@ -20,7 +20,7 @@ include("request/category.php");
 <?PHP
 $cats = get_all_category($link);
 if (!$cats)
-	echo "<p>Aucune categorie a afficher</p>";
+	echo "<h2 class=\"error-empty\">Pas de categorie a afficher</h2>";
 foreach ($cats as $cat)
 	echo "<tr>
 	<td>".$cat['label']."</td>
