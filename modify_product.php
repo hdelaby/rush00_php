@@ -11,6 +11,13 @@ if ($_POST['submit'] === "OK")
 		echo "ERROR\n";
 		exit;
 	}
+	del_category_to_product_from_pro($link, $_GET['id']);
+	if (is_array($_POST['categories']))
+	{
+		foreach ($_POST['categories'] as $key => $value) {
+			link_category_to_product($link, $value, $_GET['id']);
+		}
+	}
 	header("Location: admin_panel.php?menu=product");
 }
 ?>
@@ -29,7 +36,7 @@ $cats_product = get_category_from_product($link, $_GET['id']);
 
 	<body>
 		<h1 style="text-align: center;">Modifier un produit (ADMIN)</h1>
-		
+
 		<form action="modify_product.php?id=<?PHP echo $_GET['id'] ?>" method="post">
 			Nom du produit
 			<br />
@@ -54,7 +61,7 @@ $cats_product = get_category_from_product($link, $_GET['id']);
 <?PHP
 foreach($cats as $cat)
 {
-	echo "<input type='checkbox' name='categories' value='".$cat['id_category'];
+	echo "<input type='checkbox' name='categories[]' value='".$cat['id_category'];
 	if (array_search($cat['id_category'], $cats_product, 1) !== FALSE)
 		echo "checked";
 	echo "'> ".$cat['label']."<br \>";

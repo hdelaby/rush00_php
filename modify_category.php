@@ -23,7 +23,7 @@ if ($_POST['submit'] === "OK")
 
 	<body>
 		<h1 style="text-align: center;">Modifier une categorie (ADMIN)</h1>
-		
+
 		<form action="modify_category.php?id=<?PHP echo $_GET['id'] ?>" method="post">
 			Nom de la categorie
 			<br />

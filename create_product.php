@@ -9,6 +9,13 @@ if ($_POST['submit'] === "OK")
 		echo "ERROR\n";
 		exit;
 	}
+	$id = mysqli_insert_id($link);
+	if (is_array($_POST['categories']))
+	{
+		foreach ($_POST['categories'] as $key => $value) {
+			link_category_to_product($link, $value, $id);
+		}
+	}
 	header("Location: admin_panel.php?menu=product");
 }
 ?>
@@ -27,7 +34,7 @@ $cats = get_all_category($link);
 
 	<body>
 		<h1 style="text-align: center;">Ajouter un produit (ADMIN)</h1>
-		
+
 		<form action="create_product.php" method="post">
 			Nom du produit
 			<br />
@@ -52,7 +59,7 @@ $cats = get_all_category($link);
 			CATEGORIES <br />
 <?PHP
 foreach($cats as $cat)
-	echo "<input type='checkbox' name='categories' value='".$cat['id_category']."'> ".$cat['label']."<br \>";
+	echo "<input type='checkbox' name='categories[]' value='".$cat['id_category']."'> ".$cat['label']."<br \>";
 
 ?>
 			<input type="submit" name="submit" value="OK">
