@@ -10,6 +10,7 @@ if ($_POST['submit'] === "OK")
 		echo "ERROR\n";
 		exit;
 	}
+	set_admin($link, check_login($link, $_POST['login']), $_POST['is_admin']);
 	header("Location: admin_panel.php");
 }
 ?>
@@ -32,6 +33,8 @@ if ($_POST['submit'] === "OK")
 			<br />
 			<input type="password" name="passwd" value="" />
 			<br />
+			<input type="radio" name="is_admin" value="1">Admin<br />
+			<input type="radio" name="is_admin" value="0" checked>Pas admin<br />
 			<input type="submit" name="submit" value="OK">
 		</form>
 	</body>

@@ -25,7 +25,7 @@ foreach ($users as $user)
 	echo "<tr>
 	<td>".$user['login']."</td>
 	<td>".$user['is_admin']."</td>
-	<td><a href=modif_user.php?id=".$user['id_user'].">Modifier</a></td>
+	<td><a href=modify_user.php?id=".$user['id_user'].">Modifier</a></td>
 	<td><a href=delete_user.php?id=".$user['id_user'].">Supprimer</a></td>
 	</tr>";
 ?>
