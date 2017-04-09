@@ -98,6 +98,9 @@ ALTER TABLE `USER`
 ALTER TABLE `CATEGORY`
   ADD PRIMARY KEY (`id_category`);
 
+ALTER TABLE `ORDERS`
+  ADD PRIMARY KEY (`id_order`);
+
 --
 -- Indexes for table `product_category`
 --
