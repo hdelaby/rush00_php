@@ -14,7 +14,13 @@ if ($_POST['submit'] === "OK")
 	header("Location: admin_panel.php?menu=product");
 }
 ?>
+<?PHP
 
+include("request/category.php");
+
+$cats = get_all_category($link);
+$cats_product = get_category_from_product($link, $_GET['id']);
+?>
 <html>
 	<head>
 		<title>Modifier un produit (ADMIN)</title>
@@ -45,6 +51,15 @@ if ($_POST['submit'] === "OK")
 			<br />
 			<input type="text" name="stock" value="<?PHP echo $prod['stock'];?>" />
 			<br />
+<?PHP
+foreach($cats as $cat)
+{
+	echo "<input type='checkbox' name='categories' value='".$cat['id_category'];
+	if (array_search($cat['id_category'], $cats_product, 1) !== FALSE)
+		echo "checked";
+	echo "'> ".$cat['label']."<br \>";
+}
+?>
 			<input type="submit" name="submit" value="OK">
 		</form>
 	</body>
