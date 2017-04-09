@@ -13,6 +13,8 @@ if ($_POST['submit'] == "OK")
 		return ;
 	}
 	$_SESSION['logged_in_user'] = $id;
+	if (count($_SESSION['basket']) === 0 && get_basket($link, $id) != '')
+		$_SESSION['basket'] = unserialize(get_basket($link, $id));
 	header("Location: index.php");
 }
 
