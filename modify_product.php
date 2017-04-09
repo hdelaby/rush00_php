@@ -26,7 +26,6 @@ if ($_POST['submit'] === "OK")
 include("request/category.php");
 
 $cats = get_all_category($link);
-$cats_product = get_category_from_product($link, $_GET['id']);
 ?>
 <html>
 	<head>
@@ -61,10 +60,13 @@ $cats_product = get_category_from_product($link, $_GET['id']);
 <?PHP
 foreach($cats as $cat)
 {
-	echo "<input type='checkbox' name='categories[]' value='".$cat['id_category'];
-	if (array_search($cat['id_category'], $cats_product, 1) !== FALSE)
-		echo "checked";
-	echo "'> ".$cat['label']."<br \>";
+	$cats_product = get_category_from_product($link, $_GET['id']);
+	echo "<input type='checkbox' name='categories[]' value='".$cat['id_category']."'";
+	foreach ($cats_product as $value) {
+		if ($value['id_category'] == $cat['id_category'])
+			echo " checked";
+	}
+	echo "> ".$cat['label']."<br \>";
 }
 ?>
 			<input type="submit" name="submit" value="OK">
