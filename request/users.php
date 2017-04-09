@@ -1,4 +1,5 @@
 <?php
+
   function create_user($link, $login, $password)
   {
     $command = "
