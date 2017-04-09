@@ -1,5 +1,8 @@
 <?php
 
+if (!function_exists('create_product'))
+  include('product.php');
+
   function create_user($link, $login, $password)
   {
     $command = "
@@ -29,7 +32,18 @@
     if (($res=mysqli_query($link, $command))==false)
       return (FALSE);
       $res = mysqli_fetch_array($res);
-      return ($res['id_user']);
+    return ($res['id_user']);
+  }
+
+  function get_user($link, $id)
+  {
+    $command = "
+    SELECT * FROM `USER` WHERE `id_user`='".intval($id)."' LIMIT 1;
+    ";
+    if (($res=mysqli_query($link, $command))==false)
+      return (FALSE);
+      $res = mysqli_fetch_array($res);
+    return ($res);
   }
 
   function del_user($link, $id)
@@ -81,6 +95,16 @@
       return (FALSE);
     $res = mysqli_fetch_array($res);
     return ($res['basket']);
+  }
+
+  function delete_basket($link, $id)
+  {
+    $basket = unserialize(get_basket($link, $id));
+    set_basket($link, $id, "");
+    if (is_array)
+    {
+      foreach ()
+    }
   }
 
   function get_login($link, $id)
