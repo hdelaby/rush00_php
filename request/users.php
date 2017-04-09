@@ -98,7 +98,7 @@
   {
     $basket = unserialize(get_basket($link, $id));
     set_basket($link, $id, "");
-    if (is_array)
+    if (is_array($basket))
     {
       foreach ($basket as $val)
       {
