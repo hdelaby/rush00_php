@@ -1,8 +1,5 @@
 <?php
 
-if (!function_exists('create_product'))
-  include('product.php');
-
   function create_user($link, $login, $password)
   {
     $command = "
@@ -103,7 +100,10 @@ if (!function_exists('create_product'))
     set_basket($link, $id, "");
     if (is_array)
     {
-      foreach ()
+      foreach ($basket as $val)
+      {
+        set_stock($link, $val['id_product'], get_stock($link, $val['id_product']) + $val['quantity']);
+      }
     }
   }
 
