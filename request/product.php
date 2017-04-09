@@ -6,7 +6,7 @@ if (!function_exists('link_category_to_product'))
 function create_product($link, $label, $description, $img, $price, $stock)
 {
   $command = "
-    INSERT INTO `PRODUCT` (`id_product`, `label`, `description`, `img`, `price`, `stock`) VALUES (NULL, '$label', '$description', '$img', '$price', '$stock');
+    INSERT INTO `PRODUCT` (`id_product`, `label`, `description`, `img`, `price`, `stock`) VALUES (NULL, '".mysqli_real_escape_string($link, $label)."', '".mysqli_real_escape_string($link, $description)."', '".mysqli_real_escape_string($link, $img)."', '".intval($price)."', '".intval($stock)."');
   ";
   if (mysqli_query($link, $command)==false)
     return (FALSE);
@@ -16,7 +16,7 @@ function create_product($link, $label, $description, $img, $price, $stock)
 function update_product($link, $id, $label, $description, $img, $price, $stock)
 {
   $command = "
-    UPDATE `PRODUCT` SET `label`='$label', `description`='$description', `img`='$img', `price`='$price', `stock`='$stock' WHERE `id_product`='$id' LIMIT 1;
+    UPDATE `PRODUCT` SET `label`='".mysqli_real_escape_string($link, $label)."', `description`='".mysqli_real_escape_string($link, $description)."', `img`='".mysqli_real_escape_string($link, $img)."', `price`='".intval($price)."', `stock`='".intval($stock)."' WHERE `id_product`='".intval($id)."' LIMIT 1;
 ";
   if (mysqli_query($link, $command)==false)
 	  return (FALSE);
@@ -26,7 +26,7 @@ function update_product($link, $id, $label, $description, $img, $price, $stock)
 function set_label($link, $id, $label)
 {
   $command = "
-  UPDATE `PRODUCT` SET `label`='$label WHERE `id_product`='$id' LIMIT 1;
+  UPDATE `PRODUCT` SET `label`='".mysqli_real_escape_string($link, $label)." WHERE `id_product`='".intval($id)."' LIMIT 1;
   ";
   if (mysqli_query($link, $command)==false)
     return (FALSE);
@@ -36,7 +36,7 @@ function set_label($link, $id, $label)
 function set_description($link, $id, $description)
 {
   $command = "
-  UPDATE `PRODUCT` SET `description`='$description WHERE `id_product`='$id' LIMIT 1;
+  UPDATE `PRODUCT` SET `description`='".mysqli_real_escape_string($link, $description)." WHERE `id_product`='".intval($id)."' LIMIT 1;
   ";
   if (mysqli_query($link, $command)==false)
     return (FALSE);
@@ -46,7 +46,7 @@ function set_description($link, $id, $description)
 function set_img($link, $id, $img)
 {
   $command = "
-  UPDATE `PRODUCT` SET `img`='$img WHERE `id_product`='$id' LIMIT 1;
+  UPDATE `PRODUCT` SET `img`='".mysqli_real_escape_string($link, $img)." WHERE `id_product`='".intval($id)."' LIMIT 1;
   ";
   if (mysqli_query($link, $command)==false)
     return (FALSE);
@@ -56,7 +56,7 @@ function set_img($link, $id, $img)
 function set_price($link, $id, $price)
 {
   $command = "
-  UPDATE `PRODUCT` SET `price`='$price WHERE `id_product`='$id' LIMIT 1;
+  UPDATE `PRODUCT` SET `price`='".intval($price)." WHERE `id_product`='".intval($id)."' LIMIT 1;
   ";
   if (mysqli_query($link, $command)==false)
     return (FALSE);
@@ -66,7 +66,7 @@ function set_price($link, $id, $price)
 function set_stock($link, $id, $stock)
 {
   $command = "
-  UPDATE `PRODUCT` SET `stock`='$stock' WHERE `id_product`='$id' LIMIT 1;
+  UPDATE `PRODUCT` SET `stock`='".intval($stock)."' WHERE `id_product`='".intval($id)."' LIMIT 1;
   ";
   if (mysqli_query($link, $command)==false)
     return (FALSE);
@@ -77,7 +77,7 @@ function del_product($link, $id)
 {
   del_category_to_product_from_pro($link, $id);
   $command = "
-    DELETE FROM `PRODUCT` WHERE `id_product`='$id' LIMIT 1;
+    DELETE FROM `PRODUCT` WHERE `id_product`='".intval($id)."' LIMIT 1;
   ";
   if (mysqli_query($link, $command)==false)
     return (FALSE);
@@ -87,7 +87,7 @@ function del_product($link, $id)
 function get_product($link, $id)
 {
   $command = "
-    SELECT * FROM `PRODUCT` WHERE `id_product`='$id' LIMIT 1;
+    SELECT * FROM `PRODUCT` WHERE `id_product`='".intval($id)."' LIMIT 1;
   ";
   if (($res=mysqli_query($link, $command))==false)
     return (FALSE);

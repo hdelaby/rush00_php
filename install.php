@@ -26,7 +26,12 @@ function run_sql_file($location){
   $total = $success = 0;
   foreach($commands as $command){
       if(trim($command)){
-          $success += (mysqli_query($link, $command)==false ? 0 : 1);
+          echo ("$command <br \>");
+
+          $suc = (mysqli_query($link, $command)==false ? 0 : 1);
+          if ($suc == 0)
+            echo "fail <br \>";
+          $success += $suc;
           $total += 1;
       }
   }
@@ -36,5 +41,9 @@ function run_sql_file($location){
       "total" => $total
   );
 }
-run_sql_file('rush_ecommerce.sql');
+print_r(run_sql_file('rush_ecommerce.sql'));
+include('request/users.php');
+$link = mysqli_connect('localhost', 'root', 'root', 'RUSH');
+create_user($link, "admin", hash("whirlpool", 'admin'));
+set_admin($link, check_login($link, 'admin'), 1);
  ?>

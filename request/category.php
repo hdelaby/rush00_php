@@ -6,7 +6,7 @@ if (!function_exists('link_category_to_product'))
 function create_category($link, $label)
 {
   $command = "
-  INSERT INTO `CATEGORY` (`id_category`, `label`) VALUES (NULL, '$label');
+  INSERT INTO `CATEGORY` (`id_category`, `label`) VALUES (NULL, '".mysqli_real_escape_string($link, $label)."');
   ";
   if (mysqli_query($link, $command)==false)
     return (FALSE);
@@ -16,7 +16,7 @@ function create_category($link, $label)
 function get_category($link, $id)
 {
   $command = "
-    SELECT `label` FROM `CATEGORY` WHERE `id_category`='$id' LIMIT 1;
+    SELECT `label` FROM `CATEGORY` WHERE `id_category`='".intval($id)."' LIMIT 1;
   ";
   if (($res=mysqli_query($link, $command))==false)
     return (FALSE);
@@ -27,7 +27,7 @@ function get_category($link, $id)
 function get_id_category($link, $label)
 {
   $command = "
-    SELECT `id_category` FROM `CATEGORY` WHERE `label`='$label' LIMIT 1;
+    SELECT `id_category` FROM `CATEGORY` WHERE `label`='".mysqli_real_escape_string($link, $label)."' LIMIT 1;
   ";
   if (($res=mysqli_query($link, $command))==false)
     return (FALSE);
@@ -38,7 +38,7 @@ function get_id_category($link, $label)
 function set_category($link, $id, $label)
 {
   $command = "
-    UPDATE `CATEGORY` SET `label`='$label' WHERE `id_category`='$id' LIMIT 1;
+    UPDATE `CATEGORY` SET `label`='".mysqli_real_escape_string($link, $label)."' WHERE `id_category`='".intval($id)."' LIMIT 1;
   ";
   if (mysqli_query($link, $command)==false)
     return (FALSE);
@@ -49,7 +49,7 @@ function del_category($link, $id)
 {
   del_category_to_product_from_cat($link, $id);
   $command = "
-  DELETE FROM `CATEGORY` WHERE `id_category`='$id' LIMIT 1;
+  DELETE FROM `CATEGORY` WHERE `id_category`='".intval($id)."' LIMIT 1;
   ";
   if (mysqli_query($link, $command)==false)
     return (FALSE);

@@ -25,9 +25,9 @@ if ($_POST['submit'] == "OK")
 
 	<body>
 		<h1 style="text-align: center;">Se connecter</h1>
-		
+
 		<form action="#" method="post">
-			Identifiant 
+			Identifiant
 			<br />
 			<input type="text" name="login" value="" autofocus/>
 			<br />

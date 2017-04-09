@@ -5,7 +5,7 @@ if ($_POST['submit'] === "OK")
 {
 	if (check_login($link, $_POST['login']))
 		exit;
-	if (!create_user($link, $_POST['login'], has("whirlpool", $_POST['passwd'])))
+	if (!create_user($link, $_POST['login'], hash("whirlpool", $_POST['passwd'])))
 	{
 		echo "ERROR\n";
 		exit;
@@ -22,9 +22,9 @@ if ($_POST['submit'] === "OK")
 
 	<body>
 		<h1 style="text-align: center;">Ajouter un utilisateur (ADMIN)</h1>
-		
+
 		<form action="#" method="post">
-			Identifiant 
+			Identifiant
 			<br />
 			<input type="text" name="login" value="" autofocus/>
 			<br />
