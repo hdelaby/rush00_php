@@ -5,9 +5,9 @@ if (!isset($id))
 	echo 'You are forbidden!';
 	exit;
 }
-
 include("request/orders.php");
 include("request/product.php");
+
 ?>
 <html>
 <head>
@@ -22,11 +22,13 @@ if ($order)
   $basket = unserialize($order['content']);
 	foreach($basket as $val)
 	{
-		$product = get_product($link, $val['id_product']);
-		echo ("<h2>".$product['label']."</h2>");
-		echo ("<p>".$product['description']."</p>");
-		echo ("<p>Quantite: ".$val['quantity']."</p>");
+    $product = get_product($link, $val['id_product']);
+        echo ("<div class='product'><h2>".$product['label']." (".((int)$product['price'] / 100)."€)</h2>");
+		    echo ("<p>Description: ".$product['description']."</p>");
+		    echo ("<p>Quantite <b>".$val['quantity']."</b></p>");
+		    echo ("<form action='upd_basket.php' method='post'></form></div>");
 	}
+  echo ("<h2 style='text-align: right;'>Total : ".($order['total'] / 100)."</h2>");
 }
 ?>
 </body>
