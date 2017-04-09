@@ -24,10 +24,12 @@ if ($_SESSION['basket'])
 		echo ("<p>Quantite: ".$val['quantity']."</p>");
 	}
 }
-
+if ($_SESSION['logged_in_user'])
+{
+	echo "<form action='valid_basket.php'>
+		<button name='submit' value='ok'>Valider le panier</button>
+	</form>";
+}
 ?>
-<form action='valid_basket.php'>
-	<button name="submit" value="ok">Valider le panier</button>
-</form>
 </body>
 </html>

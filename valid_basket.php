@@ -1,5 +1,7 @@
 <?PHP
 session_start();
+if (!$_SESSION['logged_in_user'])
+	header("Location: index.php");
 include('request/users.php');
 $link = mysqli_connect('localhost', 'root', 'root', 'RUSH');
 // SERIALIZE THE BASKET BEFORE PUTTING IN IN DB
