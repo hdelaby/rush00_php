@@ -15,6 +15,8 @@ if ($_POST['submit'] == "OK")
 	$_SESSION['logged_in_user'] = $id;
 	if (count($_SESSION['basket']) === 0 && get_basket($link, $id) != '')
 		$_SESSION['basket'] = unserialize(get_basket($link, $id));
+	else if (count($_SESSION['basket']) !== 0 && get_basket($link, $id) != '')
+		delete_basket($link, $id);
 	header("Location: index.php");
 }
 
