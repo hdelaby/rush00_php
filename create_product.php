@@ -12,7 +12,13 @@ if ($_POST['submit'] === "OK")
 	header("Location: admin_panel.php?menu=product");
 }
 ?>
+<?PHP
 
+include("request/category.php");
+
+$cats = get_all_category($link);
+
+?>
 <html>
 	<head>
 		<title>Ajouter un produit (ADMIN)</title>
@@ -43,6 +49,12 @@ if ($_POST['submit'] === "OK")
 			<br />
 			<input type="text" name="stock" value="" />
 			<br />
+			CATEGORIES <br />
+<?PHP
+foreach($cats as $cat)
+	echo "<input type='checkbox' name='categories' value='".$cat['id_category']."'> ".$cat['label']."<br \>";
+
+?>
 			<input type="submit" name="submit" value="OK">
 		</form>
 	</body>
